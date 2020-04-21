@@ -1,0 +1,78 @@
+@startuml Ejercicio 2
+
+skinparam packageStyle rectangle
+left to right direction
+
+actor Alumno
+actor Profesor
+
+rectangle Aula_Virtual_Moodle {
+    (Abrir curso) as (AbrirCur)
+    (Administrar curso) as (AdminCur)
+
+    (Cuenta Alumno) as (CueAlu)
+    (Escoger materia entre las que este matriculado) as (EsMa)
+    (Cuenta Profesor) as (CuenProf)
+
+    (Curso) as (Cur)
+
+
+    (Subir entregas) as (SubEnt)
+    (Consultar contenido) as (ConCon)
+    (Descargar contenido) as (DesCon)
+    (Consultar calificaciones) as (ConCal)
+
+    (Fijar/Modificar entrega) as (Ent)
+    (Subir contenidos) as (Sub)
+    (Calificar entrega) as (Cal)
+    
+    (Ver mensaje) as (VerMen)
+    (Escribir mensaje) as (EscMen)
+
+    (Eliminar alumno) as (ElAl)
+    (Añadir alumno) as (AnAl)
+    
+    Profesor -up- CuenProf
+    Alumno -- CueAlu
+
+    CueAlu .> EsMa : includes
+
+    EsMa <.... DesCon : extends
+    EsMa <.... ConCon : extends
+    EsMa <... SubEnt : extends
+    EsMa <... ConCal : extends
+    CueAlu <... EscMen : extends
+    CueAlu <... VerMen : extends
+
+    AbrirCur .> AdminCur : includes
+    
+    DesCon ------ Cur
+    ConCon ---- Cur
+    SubEnt ---- Cur
+    ConCal ------ Cur
+
+    CuenProf <.... EscMen : extends
+    CuenProf <.... VerMen : extends
+    CuenProf <.... AbrirCur : extends
+    AbrirCur ....> Cur : includes
+    CuenProf <.... AdminCur : extends
+    AdminCur <..... Ent : extends
+    AdminCur <..... Sub : extends
+    AdminCur <.... Cal : extends
+    AdminCur <.... AnAl : extends
+    AdminCur <.... ElAl : extends
+    Ent ----- Cur
+    Sub ----- Cur
+    Cal ----- Cur
+    AnAl ---- Cur
+    ElAl ----- Cur
+
+    
+
+
+
+
+    
+}
+
+@enduml

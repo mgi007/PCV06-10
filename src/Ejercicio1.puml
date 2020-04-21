@@ -1,0 +1,51 @@
+@startuml Ejercicio 1
+
+skinparam packageStyle rectangle
+left to right direction
+
+actor Socios
+
+actor Fabrica
+
+actor Cliente
+
+rectangle  Sistema {
+(Compra producto) as (Comprar)
+(Venta en fabrica) as (VenFab)
+(Venta por Internet) as (VenInt)
+(Venta en tienda) as (VenTien)
+(Venta a otro socio) as (VenSoc)
+(Recogen beneficios) as (Benef)
+(Elabora productos) as (Productos)
+(Retirar productos) as (Recoger)
+(Venta a un precio mayor o igual al de la fábrica) as (VentaNormal)
+(Venta en lotes del stock no deseado) as (Lotes)
+
+
+
+Fabrica ----  Productos
+Productos <.... VenInt : extends
+Productos <.... VenFab : extends
+
+Productos <.. Recoger : extends
+
+Recoger ------ Socios
+
+Socios <.... VenSoc : extends
+VenSoc ------ Socios
+Socios <. VenTien : extends
+
+VenTien <.... VentaNormal : extends
+VenTien <.... Lotes : extends
+
+Cliente ---- Comprar
+Comprar <.... VenTien: extends
+Comprar <.... VenFab : extends
+Comprar <.... VenInt : extends
+VenFab ..> Benef : include
+VenInt ..> Benef : include
+Benef ---- Socios
+
+}
+
+@enduml

@@ -31,9 +31,9 @@ Productos <.. Recoger : extends
 
 Recoger ------ Socios
 
-Socios <.... VenSoc : extends
-VenSoc ------ Socios
-Socios <. VenTien : extends
+Socios ----- VenSoc
+VenSoc ------> Socios
+Socios -- VenTien
 
 VenTien <.... VentaNormal : extends
 VenTien <.... Lotes : extends
@@ -44,7 +44,7 @@ Comprar <.... VenFab : extends
 Comprar <.... VenInt : extends
 VenFab ..> Benef : include
 VenInt ..> Benef : include
-Benef ---- Socios
+Benef -----> Socios
 
 }
 

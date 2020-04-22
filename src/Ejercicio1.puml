@@ -9,8 +9,11 @@ actor Fabrica
 
 actor Cliente
 
-rectangle  Sistema {
+rectangle  Sistema_de_Ventas_de_la_Empresa {
 (Compra producto) as (Comprar)
+(Comprar en la fabrica) as (CompFab)
+(Comprar por Internet) as (CompInt)
+(Comprar en la tienda) as (CompTie)
 (Venta en fabrica) as (VenFab)
 (Venta por Internet) as (VenInt)
 (Venta en tienda) as (VenTien)
@@ -24,23 +27,23 @@ rectangle  Sistema {
 
 
 Fabrica ----  Productos
-Productos <.... VenInt : extends
-Productos <.... VenFab : extends
+Productos <.... VenInt : extend
+Productos <.... VenFab : extend
 
-Productos <.. Recoger : extends
+Productos <.. Recoger : extend
 
 Recoger ------ Socios
 
 Socios ----- VenSoc
 Socios -- VenTien
 
-VenTien <.... VentaNormal : extends
-VenTien <.... Lotes : extends
+VenTien <.... VentaNormal : extend
+VenTien <.... Lotes : extend
 
 Cliente ---- Comprar
-Comprar <.... VenTien: extends
-Comprar <.... VenFab : extends
-Comprar <.... VenInt : extends
+Comprar <.... CompTie: extend
+Comprar <.... CompFab : extend
+Comprar <.... CompInt : extend
 VenFab ..> Benef : include
 VenInt ..> Benef : include
 

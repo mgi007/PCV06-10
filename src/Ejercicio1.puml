@@ -32,7 +32,6 @@ Productos <.. Recoger : extends
 Recoger ------ Socios
 
 Socios ----- VenSoc
-VenSoc ------> Socios
 Socios -- VenTien
 
 VenTien <.... VentaNormal : extends
@@ -44,7 +43,7 @@ Comprar <.... VenFab : extends
 Comprar <.... VenInt : extends
 VenFab ..> Benef : include
 VenInt ..> Benef : include
-Benef -----> Socios
+
 
 }
 
